@@ -1,23 +1,31 @@
+// user.h
 #pragma once
 #include <iostream>
 #include <string>
+#include <vector>
+#include "chat.h"
 
-class User {
+class User 
+{
 
 private:
-    std::string user_login;
-    std::string user_password;
-    std::string user_username;
+    const std::string _login;
+    std::string _password;
 
 public:
-    User();
-    User(std::string login, std::string password, std::string username);
-    virtual ~User();
-    User(User& _arr) = delete;
+    User() = default;
+    User(const std::string login, std::string password)
+        : _login(login), _password(password) {}
+    virtual ~User() {}
     User& operator=(User& _list) = delete;
 
     std::string get_login() const;
-    std::string get_username() const;
-    int set_username(std::string login);
-    int change_password(std::string login);
+    int change_password(std::string password); 
+
+    void set_login(const std::string login) {}
+    void set_password(std::string password) {}
+    const std::string get_login() { return _login; }
+    const std::string get_password() { return _password; }
+
+
 };
